@@ -1,0 +1,30 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Moon URL Shortener API | SocketIO",
+  "main": "app.js",
+  "scripts": {
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexJoeb/Moon.git"
+  },
+  "keywords": [
+    "url",
+    "shortener",
+    "api",
+    "rest",
+    "postgres",
+    "socketio"
+  ],
+  "author": "Alexander Besse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexJoeb/Moon/issues"
+  },
+  "homepage": "https://github.com/AlexJoeb/Moon#readme",
+  "devDependencies": {
+    "jest": "^26.6.1"
+  }
+}
