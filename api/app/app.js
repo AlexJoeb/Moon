@@ -1,50 +1,42 @@
-var app = require('express')()
-var http = require('http').createServer(app)
-var io = require('socket.io')(http)
+var app = require('express')();
 
 // * Dot ENV
-require('dotenv').config()
+require('dotenv').config();
 
 // * True/False Variable for Global Logging
-const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';
+const enableGlobalErrorLogging =
+  process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';
 
 // * Default entry route.
 app.get('/', (req, res) => {
   return res.status(200).json({
     message: 'Success message.',
     up: true,
-    time: new Date()
-  })
-})
+    time: new Date(),
+  });
+});
 
 // * Send a 404 if no other route matches with URI
 app.use((req, res) => {
   res.status(404).json({
-    message: "The route you're looking for was not found."
-  })
-})
+    message: "The route you're looking for was not found.",
+  });
+});
 
 // * Global Error Handler
 app.use((err, req, res, next) => {
   if (enableGlobalErrorLogging) {
-    console.error(`Global error handler: ${JSON.stringify(err.stack)}`)
+    console.error(`Global error handler: ${JSON.stringify(err.stack)}`);
   }
 
   res.status(err.status || 500).json({
     message: err.message,
-    error: err
-  })
-})
+    error: err,
+  });
+});
 
 // * Set the PORT
-app.set('port', process.env.PORT || 5000)
-
-// * Listen on PORT
-http.listen(app.get('port'), () => {
-  console.log(
-    `Express server is started and listening on port *:${app.get('port')}.`
-  )
-})
+app.set('port', process.env.PORT || 5000);
 
 // io.on('connection', socket => {
 //     // Sends the user the current list on connection.
@@ -66,3 +58,5 @@ http.listen(app.get('port'), () => {
 //         console.log("- A user disconnected.");
 //     })
 // })
+
+module.exports = app;

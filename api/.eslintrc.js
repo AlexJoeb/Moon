@@ -14,10 +14,10 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['__tests__/*', '__tests__/**/*'],
-      env: {
-        jest: true
-      }
+      files: ['node_modules/*', 'node_modules/**/*', '__tests__/*', '__tests__/**/*'],
+      // env: {
+      //   jest: true
+      // }
     }
   ]
 }
